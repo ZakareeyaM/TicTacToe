@@ -3,15 +3,12 @@ from tkinter import messagebox
 import random
 import requests
 
-# =========================
+
 # API CONFIGURATION
-# =========================
 API_KEY = "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"
 API_URL = "https://api.deepseek.com/v1/chat/completions"
 
-# =========================
 # GAME STATE
-# =========================
 player_symbol = "X"
 ai_symbol = "O"
 player_score = 0
@@ -24,9 +21,7 @@ buttons = [[None for _ in range(3)] for _ in range(3)]
 # Track AI's opening strategy to ensure variety
 last_opening_moves = []
 
-# =========================
 # GUI SETUP
-# =========================
 root = tk.Tk()
 root.title("AI Tic Tac Toe (Varied Difficulty)")
 
@@ -41,9 +36,8 @@ board_frame.pack()
 
 abort_button = tk.Button(root, text="Abort Game", fg="red", font=("Arial", 12))
 
-# =========================
+
 # GAME LOGIC
-# =========================
 def update_score():
     scoreboard.config(
         text=f"You: {player_score}   AI: {ai_score}   Draws: {draws}"
@@ -103,9 +97,8 @@ def on_click(r, c):
         return
     root.after(150, ai_move)
 
-# =========================
+
 # AI LOGIC - INTENTIONALLY VARIED
-# =========================
 def ai_move():
     move = get_ai_move()
     if not move:
@@ -325,9 +318,8 @@ def check_winner_board(bd_inner):
         return "Draw"
     return None
 
-# =========================
+
 # ABORT HANDLER
-# =========================
 def abort_game():
     if messagebox.askyesno("Abort Game", "Are you sure you want to quit?"):
         root.destroy()
@@ -335,9 +327,8 @@ def abort_game():
 abort_button.config(command=abort_game)
 abort_button.pack(pady=5)
 
-# =========================
+
 # BUILD BOARD
-# =========================
 for r in range(3):
     for c in range(3):
         btn = tk.Button(
